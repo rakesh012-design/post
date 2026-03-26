@@ -55,10 +55,11 @@ app.use('/api/random/post',postRouter)
 app.use('/api/random/message',messageRouter)
 
 if(process.env.NODE_ENV==='production'){
-  app.use(express.static(path.join(dirName,'../','Front-end-react/dist')))
+  const frontendDistPath = path.resolve(dirName, '..', 'Front-end-react', 'dist');
+  app.use(express.static(frontendDistPath))
 
   app.get('*path',(req,res)=>{
-    res.sendFile(path.resolve(dirName,'Front-end-react','dist','index.html'))
+    res.sendFile(path.join(frontendDistPath, 'index.html'))
   })
 }
 
