@@ -1,7 +1,7 @@
 import { createSlice,createAsyncThunk,current } from "@reduxjs/toolkit";
 
 
-const backEndUrl=process.env.NODE_ENV==='production' ? '' :'http://localhost:3000'
+const backendurl=process.env.NODE_ENV==='production' ? '' :'http://localhost:3000'
 console.log(process.env.NODE_ENV,'this is node env')
 
 export const signupUser=createAsyncThunk('signupUser',
@@ -20,7 +20,7 @@ export const signupUser=createAsyncThunk('signupUser',
 
 export const verifyUser=createAsyncThunk('verifyUser',
   async({verificationCode})=>{
-    const res=await fetch(`${url}/api/random/verify-user`,{
+    const res=await fetch(`${backendurl}/api/random/verify-user`,{
       method:"POST",
       headers:{
         "Content-Type":"application/Json"
@@ -52,7 +52,7 @@ export const login=createAsyncThunk('loginUser',async({email,password})=>{
 
 export const fetchUser=createAsyncThunk('fetchUser',async()=>{
 try {
-    const res=await fetch(`${backEndUrl}/api/random/fetch-user/me`,{
+    const res=await fetch(`${backendurl}/api/random/fetch-user/me`,{
       method:"GET",
       credentials:'include'
     })
@@ -100,7 +100,7 @@ export const checkStatus=createAsyncThunk('checkStatus',
   async()=>{
     try {
       console.log('in check status')
-      const res=await fetch(`${backEndUrl}/api/random/check`,{
+      const res=await fetch(`${backendurl}/api/random/check`,{
         method:"GET",
         credentials:"include"
       })

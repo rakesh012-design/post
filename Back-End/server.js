@@ -20,7 +20,7 @@ const dirName=path.resolve()
 
 const io=socketManager.init(server,{
   cors:{
-    origin:['http://localhost:5173', 'http://localhost:4173'],
+    origin:['http://localhost:5173', 'http://localhost:4173','https://post-8or7.onrender.com'],
     credentials:true
   },
 })
@@ -36,7 +36,7 @@ const messageRouter=require('./Routes/message-router')
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-  origin:['http://localhost:5173','http://localhost:4173','http://localhost:3000','https://post-8or7.onrender.com/'],
+  origin:['http://localhost:5173','http://localhost:4173','http://localhost:3000','https://post-8or7.onrender.com'],
   credentials:true
 }))
 
