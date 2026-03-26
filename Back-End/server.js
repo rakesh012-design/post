@@ -58,7 +58,7 @@ if(process.env.NODE_ENV==='production'){
   app.use(express.static(path.join(dirName,'../','Front-end-react/dist')))
 
   app.get('*path',(req,res)=>{
-    res.sendFile(path.resolve(dirName,'../','Front-end-react','dist','index.html'))
+    res.sendFile(path.resolve(dirName,'Front-end-react','dist','index.html'))
   })
 }
 
