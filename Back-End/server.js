@@ -55,7 +55,7 @@ app.use('/api/random/post',postRouter)
 app.use('/api/random/message',messageRouter)
 
 if(process.env.NODE_ENV==='production'){
-  const frontendDistPath = path.resolve(dirName, '..', 'Front-end-react', 'dist');
+  const frontendDistPath = path.resolve(dirName, '..', 'Front-end-React', 'dist');
   app.use(express.static(frontendDistPath))
   console.log('path from ???',frontendDistPath)
   app.get('*path',(req,res)=>{
