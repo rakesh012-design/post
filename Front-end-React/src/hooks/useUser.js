@@ -9,6 +9,7 @@ import {socket} from '../store/socket'
 
 
 export const useUser=()=>{
+  const backEndUrl=process.env.NODE_ENV==='production' ? '' :'http://localhost:3000'
 
   const [followState,setFollowState]=useState()
   const [followers,setFollowers]=useState()
@@ -26,7 +27,7 @@ export const useUser=()=>{
   const isCurrentUser=String(currUser?._id)===String(userIdUrl)
 
   const getUser=async(id)=>{
-    const res=await fetch(`http://localhost:3000/api/random/get-foreign-user/${id}`,{
+    const res=await fetch(`${backEndUrl}/api/random/get-foreign-user/${id}`,{
       method:"GET",
       credentials:'include'
     })
@@ -56,7 +57,7 @@ export const useUser=()=>{
 
   const followOrUnfollow=async(userId)=>{
     
-    const res=await fetch('http://localhost:3000/api/random/follow-or-unfollow',{
+    const res=await fetch(`${backEndUrl}api/random/follow-or-unfollow`,{
       method:"POST",
       credentials:'include',
       headers:{'content-type':'application/json'},
@@ -88,7 +89,7 @@ export const useUser=()=>{
     const formData=new FormData(e.target)
     const userId=formData.get('userId')
     const message=formData.get('message')
-    const res=await fetch('http://localhost:3000/api/random/message/send-message',{
+    const res=await fetch(`${backEndUrl}/api/random/message/send-message`,{
       method:"POST",
       credentials:'include',
       headers:{'content-type':'application/json'},
@@ -104,7 +105,7 @@ export const useUser=()=>{
   
 
   const getMessages=async()=>{
-    const res=await fetch(`http://localhost:3000/api/random/message/get-messages/${userIdUrl}`,{
+    const res=await fetch(`${backEndUrl}/api/random/message/get-messages/${userIdUrl}`,{
       method:"GET",
       credentials:'include'
     })

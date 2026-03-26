@@ -6,7 +6,7 @@ console.log(process.env.NODE_ENV,'this is node env')
 
 export const signupUser=createAsyncThunk('signupUser',
   async({userName,email,password})=>{
-    const res=await fetch('http://localhost:3000/api/random/signup',{
+    const res=await fetch(`${backendurl}/api/random/signup`,{
       method:"POST",
       headers:{
         "Content-Type":"application/Json"
@@ -34,7 +34,7 @@ export const verifyUser=createAsyncThunk('verifyUser',
 
 export const login=createAsyncThunk('loginUser',async({email,password})=>{
   try {
-    const res=await fetch('http://localhost:3000/api/random/login',{
+    const res=await fetch(`${backendurl}/api/random/login`,{
       method:"POST",
       credentials:'include',
       headers:{
@@ -67,7 +67,7 @@ try {
 
 export const logoutUser=createAsyncThunk('logoutUser',
   async()=>{
-    const res=await fetch('http://localhost:3000/api/random/logout',{
+    const res=await fetch(`${backendurl}/api/random/logout`,{
       method:"POST",
       credentials:"include"
     })
@@ -78,7 +78,7 @@ export const logoutUser=createAsyncThunk('logoutUser',
 export const googleLoginFunction=createAsyncThunk('googleLogin',
   async(res)=>{
     try{
-    const response=await fetch('http://localhost:3000/api/random/google-login',{
+    const response=await fetch(`${backendurl}/api/random/google-login`,{
       method:"POST",
       headers:{
         "Content-Type":"application/Json"
@@ -115,8 +115,8 @@ export const checkStatus=createAsyncThunk('checkStatus',
 
 export const changePassword=createAsyncThunk('changePassword',
   async({oldPassword,newPassword})=>{
-    
-    const res=await fetch('http://localhost:3000/api/random/change-password',{
+
+    const res=await fetch(`${backendurl}/api/random/change-password`,{
       credentials:'include',
       method:'POST',
       headers:{"Content-Type":"application/Json"},
@@ -131,7 +131,7 @@ export const changePassword=createAsyncThunk('changePassword',
 
 export const editUser=createAsyncThunk('editUser',
   async({newUserName,newEmail})=>{
-    const res=await fetch('http://localhost:3000/api/random/edit-user',{
+    const res=await fetch(`${backendurl}/api/random/edit-user`,{
       method:"PATCH",
       credentials:"include",
       headers:{
@@ -146,7 +146,7 @@ export const editUser=createAsyncThunk('editUser',
 
 export const uploadProfilePicture=createAsyncThunk('upload profile picture',
   async(formdata)=>{
-    const res=await fetch('http://localhost:3000/api/random/upload/profile-picture',{
+    const res=await fetch(`${backendurl}/api/random/upload/profile-picture`,{
       method:"POST",
       credentials:'include',
       body:formdata
@@ -158,7 +158,7 @@ export const uploadProfilePicture=createAsyncThunk('upload profile picture',
 
 export const forgotPassword=createAsyncThunk('forgot password',
   async(email)=>{
-    const res=await fetch('http://localhost:3000/api/random/forgot-password',{
+    const res=await fetch(`${backendurl}/api/random/forgot-password`,{
       method:'POST',
       headers:{
         "Content-Type":"application/json"
@@ -171,7 +171,7 @@ export const forgotPassword=createAsyncThunk('forgot password',
 
 export const verifyTokenPassword=createAsyncThunk('verifyPasswordToken',
   async(verificationToken)=>{
-    const res=await fetch('http://localhost:3000/api/random/verify/forgot-passowrd',{
+    const res=await fetch(`${backendurl}/api/random/verify/forgot-passowrd`,{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
@@ -186,7 +186,7 @@ export const verifyTokenPassword=createAsyncThunk('verifyPasswordToken',
 
 export const addPostToFavourites=createAsyncThunk('addPostToFavourites',
   async(postId)=>{
-    const res=await fetch(`http://localhost:3000/api/random/post/add-post-to-favourites/${postId}`,{
+    const res=await fetch(`${backendurl}/api/random/post/add-post-to-favourites/${postId}`,{
       method:"GET",
       credentials:"include"
     })
@@ -197,7 +197,7 @@ export const addPostToFavourites=createAsyncThunk('addPostToFavourites',
 
 export const getUserFavourites=createAsyncThunk('getUserFavourites',
   async()=>{
-    const res=await fetch('http://localhost:3000/api/random/post/get-user-favourites',{
+    const res=await fetch(`${backendurl}/api/random/post/get-user-favourites`,{
       method:"GET",
       credentials:'include'
     })

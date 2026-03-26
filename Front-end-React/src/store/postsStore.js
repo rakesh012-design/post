@@ -3,7 +3,7 @@ import {socket} from './socket'
 
 const backEndUrl=process.env.NODE_ENV==='production' ? '' :'http://localhost:3000'
 //const backEndUrl='http://localhost:3000'
-console.log('this is backendurl from post store',backEndUrl)
+console.log('this is backEndUrl from post store',backEndUrl)
 
 export const getPosts=createAsyncThunk('getPosts',
   async(pageNum)=>{
@@ -25,7 +25,7 @@ export const getPosts=createAsyncThunk('getPosts',
 export const likePost=createAsyncThunk('likePost',
   async({id})=>{
 
-   const res=await fetch(`http://localhost:3000/api/random/post/like-post/${id}`,{
+   const res=await fetch(`${backEndUrl}/api/random/post/like-post/${id}`,{
     method:'POST',
     credentials:'include'
    })
@@ -37,7 +37,7 @@ export const likePost=createAsyncThunk('likePost',
 
 export const fetchAllPosts=createAsyncThunk('fetchAllPosts',
   async(pageNum)=>{
-    const res=await fetch(`http://localhost:3000/api/random/post/all-posts?page=${pageNum || 1}`,{
+    const res=await fetch(`${backEndUrl}/api/random/post/all-posts?page=${pageNum || 1}`,{
       method:"GET",
       credentials:"include"
     })
@@ -48,7 +48,7 @@ export const fetchAllPosts=createAsyncThunk('fetchAllPosts',
 
 export const createPost=createAsyncThunk('createPost',
   async({formData})=>{
-    const res=await fetch('http://localhost:3000/api/random/post/upload-posts',{
+    const res=await fetch(`${backEndUrl}/api/random/post/upload-posts`,{
       method:"POST",
       credentials:'include',
       body:formData
@@ -60,7 +60,7 @@ export const createPost=createAsyncThunk('createPost',
 
 export const getPostDetails=createAsyncThunk('getPostDetails',
   async(id)=>{
-    const res=await fetch(`http://localhost:3000/api/random/post/single-post/${id}`,{
+    const res=await fetch(`${backEndUrl}/api/random/post/single-post/${id}`,{
       method:"GET",
       credentials:'include'
     })
@@ -72,7 +72,7 @@ export const editPost=createAsyncThunk('editPost',
   async({id,title,caption})=>{
     console.log(id,title,caption)
     
-    const res=await fetch(`http://localhost:3000/api/random/post/edit-post/${id}`,{
+    const res=await fetch(`${backEndUrl}/api/random/post/edit-post/${id}`,{
       method:"PATCH",
       credentials:'include',
       headers:{
@@ -87,7 +87,7 @@ export const editPost=createAsyncThunk('editPost',
 
 export const deletePost=createAsyncThunk('deletePost',
   async({id})=>{
-    const res=await fetch(`http://localhost:3000/api/random/post/delete-post/${id}`,{
+    const res=await fetch(`${backEndUrl}/api/random/post/delete-post/${id}`,{
       method:"DELETE",
       credentials:'include'
     })
@@ -98,7 +98,7 @@ export const deletePost=createAsyncThunk('deletePost',
 
 export const addComment=createAsyncThunk('addComment',
   async({postId,comment})=>{
-    const res=await fetch('http://localhost:3000/api/random/add-comment',{
+    const res=await fetch(`${backEndUrl}/api/random/add-comment`,{
       method:"POST",
       credentials:'include',
       headers:{'content-type':'application/json'},

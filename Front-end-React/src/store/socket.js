@@ -5,7 +5,7 @@ import { ToastContainer,toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { getPostDetails } from './postsStore'
 
-const url='http://localhost:3000'
+const url=process.env.NODE_ENV==='production' ? '' :'http://localhost:3000'
 
 export const socket=io(url,{
   autoConnect:false,
