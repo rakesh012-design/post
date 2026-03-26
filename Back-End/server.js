@@ -59,7 +59,7 @@ if(process.env.NODE_ENV==='production'){
   app.use(express.static(frontendDistPath))
   console.log('path from ???',frontendDistPath)
   app.get('*path',(req,res)=>{
-    //console.log('path from sendFile',path.join(frontendDistPath, 'index.html'))
+    console.log('path from sendFile',path.join(frontendDistPath, 'index.html'))
     res.sendFile(path.join(frontendDistPath, 'index.html'))
   })
 }
