@@ -57,8 +57,9 @@ app.use('/api/random/message',messageRouter)
 if(process.env.NODE_ENV==='production'){
   const frontendDistPath = path.resolve(dirName, '..', 'Front-end-react', 'dist');
   app.use(express.static(frontendDistPath))
-
+  console.log('path from ???',frontendDistPath)
   app.get('*path',(req,res)=>{
+    //console.log('path from sendFile',path.join(frontendDistPath, 'index.html'))
     res.sendFile(path.join(frontendDistPath, 'index.html'))
   })
 }
