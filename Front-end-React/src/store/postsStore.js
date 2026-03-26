@@ -9,7 +9,7 @@ export const getPosts=createAsyncThunk('getPosts',
   async(pageNum)=>{
     //console.log(pageNum)
     try {
-      const res=await fetch(`http://localhost:3000/api/random/post/pagination?page=${pageNum || 1}`,{
+      const res=await fetch(`${backEndUrl}/api/random/post/pagination?page=${pageNum || 1}`,{
         method:"GET",
         credentials:'include'
       })

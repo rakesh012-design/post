@@ -52,7 +52,7 @@ export const login=createAsyncThunk('loginUser',async({email,password})=>{
 
 export const fetchUser=createAsyncThunk('fetchUser',async()=>{
 try {
-    const res=await fetch(`http://localhost:3000/api/random/fetch-user/me`,{
+    const res=await fetch(`${backEndUrl}/api/random/fetch-user/me`,{
       method:"GET",
       credentials:'include'
     })
@@ -100,7 +100,7 @@ export const checkStatus=createAsyncThunk('checkStatus',
   async()=>{
     try {
       console.log('in check status')
-      const res=await fetch(`http://localhost:3000/api/random/check`,{
+      const res=await fetch(`${backEndUrl}/api/random/check`,{
         method:"GET",
         credentials:"include"
       })
