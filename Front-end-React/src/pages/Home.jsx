@@ -7,6 +7,7 @@ import { useNavigate, useSearchParams} from 'react-router-dom'
 import Pager from '../components/Pager'
 import { toast,ToastContainer } from 'react-toastify'
 import {socket} from '../store/socket'
+import SkeletonPost from '../skeleton component/SkeletonPost'
 
 const Home = () => {
   const store=useSelector((store)=>store.postStore)
@@ -42,7 +43,7 @@ const Home = () => {
     anFn()
     
   },[])
-  
+
 
   return (
     <>
@@ -56,7 +57,7 @@ const Home = () => {
           />
         ))
       ) : (
-        isLoading ? <h1><FaSpinner className='animate-spin'/></h1> :<h1>No Posts</h1>
+        isLoading ? <SkeletonPost /> :<h1>No Posts</h1>
       )}
     
     </div>
