@@ -4,7 +4,7 @@ import {useNavigate,Link} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import {GoogleLogin} from '@react-oauth/google'
-import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import { FaEye, FaEyeSlash,FaSpinner } from 'react-icons/fa'
 import {ToastContainer,toast} from 'react-toastify'
 
 
@@ -19,6 +19,7 @@ const Login = () => {
 
 
   const [showPassword,setShowPassword]=useState(false)
+  const [loading,setLoading]=useState(false)
 
   const changePasswordState=()=>{
     setShowPassword(!showPassword)
@@ -36,6 +37,7 @@ const Login = () => {
   },[])
 
   const loginUser=async()=>{
+    setLoading(true)
     const email=emailRef.current.value
     const password=passwordRef.current.value
     const res=await dispatch(login({email,password}))
@@ -45,6 +47,7 @@ const Login = () => {
     else{
       toast.error(res.payload.message)
     }
+    setLoading(false)
    
   }
 
@@ -94,7 +97,7 @@ const Login = () => {
             onClick={loginUser}
             className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 rounded-lg hover:shadow-lg transition transform hover:scale-105"
           >
-            Sign In
+            {loading ? <FaSpinner className='animate-spin' />: 'login'}
           </button>
 
           <div className="relative my-6">

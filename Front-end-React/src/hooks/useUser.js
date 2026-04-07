@@ -57,7 +57,7 @@ export const useUser=()=>{
 
   const followOrUnfollow=async(userId)=>{
     
-    const res=await fetch(`${backEndUrl}api/random/follow-or-unfollow`,{
+    const res=await fetch(`${backEndUrl}/api/random/follow-or-unfollow`,{
       method:"POST",
       credentials:'include',
       headers:{'content-type':'application/json'},
