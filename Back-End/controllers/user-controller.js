@@ -144,12 +144,12 @@ const googleLogin=async(req,res)=>{
       user.profilePic=userInfo.picture
       await user.save()
     }
-    const token=jwt.sign({userId:user._id},process.env.JWT_SECRET_KEY,{expiresIn:'1h'})
-    res.cookie('token',token,{
+    const accessToken=jwt.sign({userId:user._id},process.env.JWT_SECRET_KEY,{expiresIn:'1h'})
+    const refreshToken=jwt.sign({accessToken},process.env.JWT_SECRET_KEY,{expiresIn:'1h'})
+    res.cookie('token',refreshToken,{
       httpOnly:true,
       sameSite:'lax',
       secure:false,
-
     })
     return res.status(200).json({success:true,message:'user Logged in successfully'})
   }catch(e){
